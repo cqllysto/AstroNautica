@@ -2,6 +2,9 @@
 PURPOSE: (Set the initial data values)
 *************************************************************************/
 
+/* WORK IN PROGRESS */
+
+
 /* Model Include files */
 #include <math.h>
 #include "../include/spacecraft.h"

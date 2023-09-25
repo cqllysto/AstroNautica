@@ -19,7 +19,7 @@ class maneuver {
         void biImpulse()
         void abort();
     public:
-        double deltaV();
+        double deltaV;
 }
 
 #endif

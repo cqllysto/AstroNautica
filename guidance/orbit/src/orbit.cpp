@@ -1,5 +1,5 @@
 /******************************* TRICK HEADER ****************************
-PURPOSE: (Set the initial data values)
+PURPOSE: (Calculate orbital characteristics)
 *************************************************************************/
 
 /* Model Include files */

@@ -1,3 +1,6 @@
+/******************************* TRICK HEADER ****************************
+PURPOSE: (calculations for the spacecraft attributes)
+*************************************************************************/
 
 
 #include "../include/spacecraft.h"
