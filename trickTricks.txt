@@ -1,0 +1,11 @@
+Tricks to remember for Trick :)
+
+The comment at the top of the file, containing the keyword PURPOSE: (the colon is part of the keyword) is called a "Trick header". The presence of a Trick header lets Trick know that it should scan the file to collect information about the data types it contains.
+
+The Input/Output (I/O) Specification
+An I/O specification is an optional field that specifies data flow direction for a variable. The default, *io , specifies that both input and output are allowed.
+
+*i tells Trick that the parameter will be input only.
+*o tells Trick that the parameter is output only.
+*io is the default and means the parameter may be used for input or output.
+** tells Trick that you do NOT want this parameter processed.
