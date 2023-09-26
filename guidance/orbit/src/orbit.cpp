@@ -6,13 +6,13 @@ PURPOSE: (Calculate orbital characteristics)
 #include <cmath>
 #include "../include/orbit.h"
 
-using namespace std:
+using namespace std;
 
 orbit::orbit() {
     semiMajor, semiMinor, e, period, velApo, velPeri = 0;
-    apoapsis, periapsis = 0
+    apoapsis, periapsis = 0;
     mass = 5.9722 * 10^24; 
-    G = 6.67430 * 10^−11;
+    G = 6.67430 * 10^-11;
 }
 
 double orbit::calcSemiMajor(double a, double p) {
@@ -35,12 +35,12 @@ double orbit::calcPeriod(double sMj) {
 }
 
 double orbit::calcVelApo(double a, double sMj) {
-    vel = sqrt((G * mass) * (2/a - 1/sMj);
+    vel = sqrt((G * mass) * (2/a - 1/sMj));
     return vel;
 }
 
 double orbit::calcVelPeri(double p, double sMj) {
-    vel = sqrt((G * mass) * (2/p - 1/sMj);
+    vel = sqrt((G * mass) * (2/p - 1/sMj));
     return vel;
 }
 

@@ -17,8 +17,9 @@ class maneuvers {
         void lowerApo(orbit &o, spacecraft &sc);
         void lowerPeri(orbit &o, spacecraft &sc);
         void circOrbit(orbit &o, spacecraft &sc);
-        void hohmann(orbit &o, spacecraft &sc);
-        void biImpulse(orbit &o, spacecraft &sc);
+        void hohmann(orbit &o, spacecraft &sc, double sMj);
+        void biImpulse(orbit &o, spacecraft &sc, 
+            double interApo, double targetApo);
         void abort(orbit &o, spacecraft &sc);
     public:
         maneuvers();

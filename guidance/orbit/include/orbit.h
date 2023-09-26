@@ -18,10 +18,13 @@ class orbit {
         double velApo;      /* *io m/s vel at apoapsis */
         double calcVelPeri(double semiMajor, double r); /* ** calculates period of orbit */
         double velPeri;     /* *io m/s vel at periapsis */
-        const double mass;  /* *io m/s Earth's mass */
-        const double G;     /* *io m/s Earth's gravitational constant */
+        double mass;  /* *io m/s Earth's mass */
+        double G;     /* *io m/s Earth's gravitational constant */
         double calcApoapsis(double velPeri, double periapsis); /* ** calculates period of orbit */
         double apoapsis;    /* *io m distance from earth to apo */
         double calcPeriapsis(double velApo, double apoapsis); /* ** calculates period of orbit */
         double periapsis;   /* *io m distance from earth to peri */
-}
+        orbit();
+};
+
+#endif
