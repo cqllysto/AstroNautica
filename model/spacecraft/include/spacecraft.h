@@ -7,7 +7,7 @@ PURPOSE: (Represent the state and initial conditions of a spacecraft)
 
 
 // Spacecraft class
-class sc {
+class spacecraft {
     public:
         double radius;      /* *io m distance from earth to spacecrafts current position */
         double calcVel(double radius, double semiMajor); /* ** */
