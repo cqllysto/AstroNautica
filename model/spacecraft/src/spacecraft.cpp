@@ -3,33 +3,41 @@ PURPOSE: (calculations for the spacecraft attributes)
 *************************************************************************/
 
 
+/* Model include files */
 #include "../include/spacecraft.h"
 #include "../../../guidance/orbit/include/orbit.h"
 #include <cmath>
 #include <iostream>
 
-sc::sc(){
-
+/* constructor */
+spacecraft::spacecraft(){
+    radius, vel, acc, time = 0.0;
+    timeAtPeri, timeToPeri = 0.0; 
+    timeToApo = 0.0;
+    meanAnomaly, trueAnomaly, eccAnomaly = 0.0;
+    thrust = 0.1;
 }
 
-double sc::vel(double r, double sMj) {
-    double v = sqrt(mass * G (2/r - 1/sMj));
+/* calculations for spacecraft characteristics*/
+
+double spacecraft::calcVel(double r, double sMj, orbit &o) {
+    double v = sqrt(o.mass * o.G * (2/r - 1/sMj));
     return v;
 }
 
-double sc::acc(double r, double v){
-    double a = v^2 / r;
+double spacecraft::calcAcc(double r, double v, orbit &o){
+    double a = pow(v, 2) / r;
     return a;
 }
 
-double sc::meanAnomaly(double p, double t, double tP) {
-    double mA = 2 * pi * (t - tP) / p;
+double spacecraft::calcMeanAnomaly(double p, double t, double tP, orbit &o) {
+    double mA = 2 * M_PI * (t - tP) / p;
     return mA;
 }
 
-double sc::eccAnomaly(double mA, double e, double acc) {
+double spacecraft::calcEccAnomaly(double mA, double e, double acc) {
     double newEcc = mA + e;
-    if (mA > pi) {
+    if (mA > M_PI) {
         newEcc = mA - e;
     }
     
@@ -43,33 +51,28 @@ double sc::eccAnomaly(double mA, double e, double acc) {
     return eccAnomaly;
 }
 
-double sc::trueAnomaly(double eA, double e) {
-    double beta = e / (1 + sqrt(1 - e^2));
-    double trueAnomaly = eA + 2 * atan(beta * sin(eA) / (1 - beta * cos(eA)));
-    trueAnomaly = trueAnomoly % (2*pi);
+double spacecraft::calcTrueAnomaly(double eA, double e) {
+    double beta = e / (1 + sqrt(1 - pow(e, 2)));
+    trueAnomaly = eA + 2 * atan(beta * sin(eA) / (1 - beta * cos(eA)));
+    trueAnomaly = fmod(trueAnomaly, 2*M_PI);
     if (trueAnomaly < 0) {
-        trueAnomaly = trueAnomaly + 2*pi;
+        trueAnomaly = trueAnomaly + 2*M_PI;
     }
     return trueAnomaly;
 }
 
-double sc::timeToPeri(double mA, double sMj) {
-    double meanMotion = sqrt(mass * G / sMj^3);
-    double timeToPeri = meanAnom / meanMotion;
+double spacecraft::calcTimeToPeri(double mA, double sMj, orbit &o) {
+    double meanMotion = sqrtf(o.mass * o.G / pow(sMj, 3));
+    double timeToPeri = meanAnomaly / meanMotion;
     return timeToPeri;
 }
 
-double sc::timeToApo(double mA, double sMj) {
+double spacecraft::calcTimeToApo(double mA, double sMj, orbit &o) {
     double timeToApo;
-    if (time < period / 2) {
-        timeToApo = timeToPeri(mA, sMj) - period / 2;
+    if (time < o.period / 2) {
+        timeToApo = calcTimeToPeri(mA, sMj, o) - o.period / 2;
     } else {
-        timeToApo = timeToPeri(mA, sMj) + period / 2;
+        timeToApo = calcTimeToPeri(mA, sMj, o) + o.period / 2;
     }
     return timeToApo;
 }
-
-
-
-
-

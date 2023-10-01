@@ -1,6 +1,6 @@
 
 /*************************************************************************
-PURPOSE: (Change the orbit of the spacecraft)
+PURPOSE: (Change the spacecraft's orbit)
 **************************************************************************/
 
 #ifndef __MANEUVERS_H
@@ -12,18 +12,18 @@ PURPOSE: (Change the orbit of the spacecraft)
 // Spacecraft class
 class maneuvers {
     private:
-        void raiseApo(orbit &o, spacecraft &sc);
-        void raisePeri(orbit &o, spacecraft &sc);
-        void lowerApo(orbit &o, spacecraft &sc);
-        void lowerPeri(orbit &o, spacecraft &sc);
+        void changeApo(orbit &o, spacecraft &sc, double altitude);
+        void changePeri(orbit &o, spacecraft &sc, double altitude);
         void circOrbit(orbit &o, spacecraft &sc);
         void hohmann(orbit &o, spacecraft &sc, double sMj);
-        void biImpulse(orbit &o, spacecraft &sc, 
+        void biElliptic(orbit &o, spacecraft &sc, 
             double interApo, double targetApo);
-        void abort(orbit &o, spacecraft &sc);
+        void biImpulse(orbit &o, spacecraft &sc, 
+            double targetPeri, double targetApo);
+        // void abort(orbit &o, spacecraft &sc); future function
     public:
         maneuvers();
-        double deltaV;
+        double deltaV; /* */
 };
 
 #endif

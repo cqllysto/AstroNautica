@@ -1,0 +1,31 @@
+/************************TRICK HEADER*************************
+PURPOSE:
+    (S_define file for AstroNautica)
+LIBRARY DEPENDENCIES:
+    (
+      (model/spacecraft/src/spacecraft.cpp)
+      (model/spacecraft/src/spacecraft_init.cpp)
+      (guidance/orbit/src/orbit.cpp)
+      (guidance/maneuvers/src/maneuvers.cpp)
+    )
+*************************************************************/
+
+#include "sim_objects/default_trick_sys.sm"
+##include "guidance/maneuvers/include/maneuvers.h"
+##include "guidance/orbit/include/orbit.h"
+##include "model/spacecraft/include/spacecraft.h"
+
+class spacecraftSimObject : public Trick::SimObject {
+
+    public:
+        spacecraf sc;
+
+        spacecraftSimObject() {
+            ("default_data") spacecraft_default_data( &sc ) ;
+            ("initialization") spacecraft_init( &sc ) ;
+            (0.01, "scheduled") spacecraft_update( &sc ) ; // needs to be added
+            ("shutdown") spacecraft_shutdown( &sc ) ; // needs to be added
+        }
+} ;
+
+spacecraftSimObject dyn ;
