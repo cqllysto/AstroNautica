@@ -6,7 +6,7 @@ Simplifications and Assumptions:
     Assume 2d system with no inclination changes.
     Maneuvers can only be performed at periapsis or apoapsis (if the orbit is circular, then the    spacecraft is set to behave as if it is always at periapsis).
     The spacecraft orbits a gravity well of earth characteristics, but there is no physical body simulated yet.
-    Spacecraft burns happen instantly, rather than over a period of time.
+    Maneuver burns happen instantly, rather than over a period of time.
 
 ## Spacecraft:
     Describes the current position using the mean and true anamoly.
@@ -33,9 +33,9 @@ Simplifications and Assumptions:
     Add the Earth sensor for control and attitude calibration
     Complete the abort maneuver function
     Write the biElliptical maneuver function
-    Rewrite homann, circOrbit, bi-impulse to call changeApo and changePeri
+    Rewrite homann, circOrbit, bi-impulse to call changeApo and changePeri for simplicity
     Add the update functions to update orbital and spacecraft parameters as simulation is running
-    Write test functions to test class functionality
+    Write test functions to test each class functionality
     Ask r/KerbalSpaceProgram and r/programming for feedback
 
 ### Future Plans:
